@@ -7,14 +7,13 @@
       type="primary"
       size="small"
       :icon="Edit"
-      title="啦啦啦"
-    ></HintButton>
+      title="啦啦啦"></HintButton>
   </div>
 </template>
 
 <script setup lang="ts">
-import HintButton from "@/views/Attrs/HintButton.vue";
-import { Edit } from "@element-plus/icons-vue";
+import HintButton from '@/views/Attrs/HintButton.vue'
+import { Edit } from '@element-plus/icons-vue'
 </script>
 
 <style scoped></style>
