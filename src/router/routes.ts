@@ -4,87 +4,130 @@ export const constantRoute = [
     name: 'login',
     component: () => import('../views/login/login.vue'),
     meta: {
-      title: '系统菜单',
+      title: '登录',
       hidden: true,
-      icon: 'Avatar',
     },
   },
   {
     path: '/',
+    component: () => import('@/views/layout/index.vue'),
     name: 'layout',
-    component: () => import('../views/layout/index.vue'),
     meta: {
-      title: '菜单管理',
-      hidden: true,
+      title: 'layout',
+      hidden: false,
+      icon: 'Avatar',
+
     },
-    // children: [
-    //   {
-    //     path: '/home',
-    //     component: () => import('@/views/home/index.vue'),
-    //     meta: {
-    //       title: '首页',
-    //       hidden: true,
-    //       icon: 'Avatar',
-    //     },
-    //     children: [
-    //       {
-    //         path: '/home',
-    //         component: () => import('@/views/home/index.vue'),
-    //         meta: {
-    //           title: '首页',
-    //           hidden: true,
-    //           icon: 'Avatar',
-    //         },
-    //       },
-    //       {
-    //         path: '/ceshi',
-    //         component: () => import('@/views/home/index.vue'),
-    //         meta: {
-    //           title: '测试',
-    //           hidden: true,
-    //         },
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     path: '/ceshi',
-    //     component: () => import('@/views/home/index.vue'),
-    //     meta: {
-    //       title: '测试',
-    //       hidden: true,
-    //     },
-    //   },
-    // ],
+    redirect:'/home',//路由重定向
+    children: [
+      {
+        path: '/home',
+        component: () => import('@/views/home/index.vue'),
+        meta: {
+          title: '首页',
+          hidden: false,
+          icon: 'HomeFilled',
+        },
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (About.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/Attrs/attrsListen.vue'),
-    meta: {
-      title: '组织机构管理',
-      hidden: true,
-    },
+    path:'/screen',
+    component:()=>import('@/views/screen/index.vue'),
+    name:'Screen',
+    meta:{
+      title:'数据大屏',
+      hidden:false,
+      icon:'Platform'
+    }
   },
   {
-    path: '/ref-parent',
-    name: 'ref',
-    component: () => import('../views/ref-childre/refChildren.vue'),
-    meta: {
-      title: '角色管理',
-      hidden: true,
+    path:'/cal',
+    component:()=>import('@/views/layout/index.vue'),
+    meta:{
+      title:"权限管理",
+      hidden:false,
+      icon:'Lock'
     },
+    children:[
+     {
+      path:'/acl/user',
+      component:()=>import('@/views/acl/user/index.vue'),
+      name:'Acl',
+      meta:{
+        title:'用户管理',
+        hidden:false,
+        icon:'User'
+      }
+     },
+     {
+      path:'/acl/role',
+      component:()=>import('@/views/acl/role/index.vue'),
+      name:'Role',
+      meta:{
+        title:'权限管理',
+        hidden:false,
+        icon:'UserFilled'
+      }
+     },{
+      path:'/acl/permission',
+      component:()=>import('@/views/acl/permission/index.vue'),
+      name:'Permission',
+      meta:{
+        title:'菜单管理',
+        hidden:false,
+        icon:'Monitor'
+      }
+     }
+    ]
   },
   {
-    path: '/svg-demo',
-    name: 'svg',
-    component: () => import('../views/SvgDemo/svgIndex.vue'),
-    meta: {
-      title: '用户管理',
-      hidden: true,
+    path:'/product',
+    component:()=>import('@/views/layout/index.vue'),
+    name:'Product',
+    meta:{
+      title:"商品管理",
+      hidden:false,
+      icon:'Goods'
     },
+    children:[
+      {
+        path:'/product/trademark',
+        component:()=>import('@/views/product/trademark/index.vue'),
+        meta:{
+          title:'品牌管理',
+          hidden:false,
+          icon:'ShoppingCartFull'
+        }
+      },
+      {
+        path:'/product/arrt',
+        component:()=>import('@/views/product/attr/index.vue'),
+        name:'Attr',
+        meta:{
+          title:'属性管理',
+          icon:'ChromeFilled'
+        }
+      },
+      {
+        path:'/product/spu',
+        component:()=>import('@/views/product/spu/index.vue'),
+        name:'Spu',
+        meta:{
+          title:'SPU管理',
+          icon:'Calendar'
+        }
+      },
+      {
+        path:'/product/sku',
+        component:()=>import('@/views/product/sku/index.vue'),
+        name:'Sku',
+        meta:{
+          title:'SKU管理',
+          icon:'Orange'
+        }
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
@@ -92,7 +135,7 @@ export const constantRoute = [
     name: 'Any',
     meta: {
       title: '404',
-      hidden: false,
+      hidden: true,
     },
   },
 ]

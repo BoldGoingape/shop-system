@@ -12,7 +12,6 @@ import App from './App.vue'
 // import router from './router'
 import { router } from '@/router/index'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-console.log(ElementPlusIconsVue)
 
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

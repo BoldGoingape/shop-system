@@ -17,7 +17,9 @@
       <div class="layout_tabbar"></div>
       <!-- 内容展示 -->
       <div class="layout_main">
-        <p style="height: 10000px">内容展示</p>
+       
+          <Main></Main>
+      
       </div>
     </div>
   </div>
@@ -27,6 +29,7 @@
 import Logo from './logo/logo.vue'
 import Menu from './menu/index.vue'
 import useUserStore from '@/stores/modules/user'
+import Main from '@/views/layout/main/index.vue'
 const userStore = useUserStore()
 </script>
 
@@ -34,18 +37,22 @@ const userStore = useUserStore()
 .layout_container {
   width: 100%;
   height: 100vh;
+
   .layout_slider {
     width: $base-menu-width;
     height: 100vh;
     background-color: $base-menu-backgroun;
+
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base-menu-logo-height);
+
       .el-menu {
         border-right: none;
       }
     }
   }
+
   .layout_tabbar {
     position: fixed;
     width: calc(100% - $base-menu-width);
@@ -54,6 +61,7 @@ const userStore = useUserStore()
     top: 0px;
     left: $base-menu-width;
   }
+
   .layout_main {
     position: absolute;
     width: calc(100% - $base-menu-width);
@@ -64,5 +72,4 @@ const userStore = useUserStore()
     padding: 20px;
     overflow: auto;
   }
-}
-</style>
+}</style>
