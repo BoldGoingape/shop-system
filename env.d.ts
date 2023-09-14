@@ -5,3 +5,5 @@ declare module '*.vue0' {
   const componentOptions: ComponentOptions
   export default componentOptions
 }
+
+declare module 'nprogress'
