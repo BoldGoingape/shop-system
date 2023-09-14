@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAttrs } from "vue";
+import { useAttrs } from 'vue'
 // 接收父组件传递过来的数据
 // defineProps(["type", "size", "icon"]);
-const $attrs = useAttrs();
-console.log();
+const $attrs = useAttrs()
+console.log($attrs)
 </script>
 
 <style lang="scss" scoped></style>

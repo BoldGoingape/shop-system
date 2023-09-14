@@ -99,3 +99,59 @@ export default {
 </script>
 <style scoped></style>
 ```
+
+```vue
+<template>
+  <div>
+    <!-- <h1>useAttrs</h1>
+    <el-button type="primary" size="small" :icon="Edit"></el-button>
+
+    <HintButton
+      type="primary"
+      size="small"
+      :icon="Edit"
+      title="啦啦啦"></HintButton> -->
+
+    <!-- for循环创建 form表单 -->
+    <div style="width: 250px">
+      <el-from
+        ref="ruleFormRef"
+        :model="ruleForm"
+        :rules="rules"
+        label-width="120px"
+        class="demo-ruleForm"
+        status-icon>
+        <el-form-item label="Activity name" prop="name">
+          <el-input v-model="ruleForm.name" />
+        </el-form-item>
+
+        <!-- <div v-for="(item, index) in valueArr" :key="index">
+          <el-form-item
+            :label="item.label + index"
+            :prop="'valueArr.' + index + '.value'">
+            <el-input v-model="item.value" clearable></el-input>
+          </el-form-item>
+        </div> -->
+      </el-from>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, reactive } from 'vue'
+import HintButton from '@/views/Attrs/HintButton.vue'
+import { Edit } from '@element-plus/icons-vue'
+const ruleFormRef = ref()
+const ruleForm = ref({
+  name: '',
+})
+const rules = ref({
+  name: [
+    { required: true, message: 'Please input Activity name', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+  ],
+})
+</script>
+
+<style scoped></style>
+```
