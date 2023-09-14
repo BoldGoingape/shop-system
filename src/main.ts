@@ -1,6 +1,8 @@
 import './assets/scss/index.scss'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { createApp } from 'vue'
+// 路由鉴权
+import './permisstion'
 // import { createPinia } from 'pinia'
 import pinia from './stores'
 import ElementPlus from 'element-plus'

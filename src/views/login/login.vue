@@ -32,15 +32,15 @@
     </el-row>
   </div>
 </template>
-
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElNotification } from 'element-plus'
 import useUserStore from '@/stores/modules/user'
 const formRef = ref()
 const $router = useRouter()
+const $route = useRoute()
 const UseStore = useUserStore()
 const loginForm = reactive({
   username: '',
@@ -61,12 +61,9 @@ const rules = ref({
     { min: 3, message: '密码至少为三位', trigger: 'blur' },
   ],
 })
-
 const login = async () => {
   const result = UseStore.userLogin(loginForm)
-  const result1 = await formRef.value.validate()
-  console.log(result1)
-
+  await formRef.value.validate()
   getHours()
   if (result) {
     ElNotification({
@@ -74,8 +71,9 @@ const login = async () => {
       message: '登录成功',
       title: `Hi,${getHours()}`,
     })
-    // 编程式导航 跳转路由
-    $router.push('/')
+    // 编程式导航 跳转路由 判断路径中是否有query参数 没有跳转首页
+    const redirect: any = $route.query.redirect
+    $router.push({ path: redirect || '/' })
   } else {
     ElNotification({
       type: 'error',

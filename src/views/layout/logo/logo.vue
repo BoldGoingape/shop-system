@@ -13,7 +13,7 @@ import setting from '@/setting'
 <style scoped lang="scss">
 .logo {
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   height: $base-menu-logo-height;
   background-color: red;
   color: #fff;

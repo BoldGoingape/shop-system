@@ -9,6 +9,7 @@ const useUserStore = defineStore('User', {
   state: (): any => {
     return {
       token: localStorage.getItem('TOKEN'),
+      userName: '',
       menuRoutes: constantRoute,
     }
   },
@@ -24,6 +25,12 @@ const useUserStore = defineStore('User', {
       } else {
         return false
       }
+    },
+    // 退出登录
+    userLogout() {
+      this.token = ''
+      this.username = ''
+      localStorage.removeItem('TOKEN')
     },
   },
   //
