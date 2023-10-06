@@ -37,7 +37,7 @@ import { User, Lock } from '@element-plus/icons-vue'
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElNotification } from 'element-plus'
-import { doLogin } from '@/api.login'
+
 import useUserStore from '@/stores/modules/user'
 const formRef = ref()
 const $router = useRouter()

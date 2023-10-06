@@ -36,12 +36,11 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         '/api': {
           target: 'http://139.198.104.58:8212',
-          changeOrigin: true, //代理跨域
-          pathRewrite: {
-            '^/api': '', //重写api，把api变成空字符，因为我们真正请求的路径是没有api的
-          },
-        },
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '') // 不可以省略rewrite
+        }
       },
+      port: 8080,
       host: '0.0.0.0',
     },
   }

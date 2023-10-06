@@ -16,6 +16,7 @@ const useUserStore = defineStore('User', {
   },
   //   异步|逻辑地方
   actions: {
+    //用户登录
     async userLogin(data: loginForm) {
       // 断言写法 （value as string）
       const val = await doLogin(data)
