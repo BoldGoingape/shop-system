@@ -7,8 +7,9 @@ import { OUTER, LOCAL, TEXT, CUR_EVN, PROJECT_URL } from './evn.config'
 //请求基本url
 const BASE_URL_CONFIG: any = {
   // [OUTER]: "http://39.107.252.31:18889/",
-  [OUTER]: 'http://139.198.104.58:8212',
-  [TEXT]: 'http://139.198.104.58:8212/api/',
+  // [OUTER]: 'http://139.198.104.58:8212',
+  [TEXT]: 'http://127.0.0.1:8080',
+  // 开发环境 代理
   // [LOCAL]: PROJECT_URL + "/api/"
   [LOCAL]: 'http://127.0.0.1:18889/',
 }
@@ -21,8 +22,8 @@ const IMAGE_BASE_URL_CONFIG: any = {
 
 //请求基本url
 // const BASE_URL = BASE_URL_CONFIG[CUR_EVN];
-const BASE_URL = BASE_URL_CONFIG[OUTER]
-// const BASE_URL = BASE_URL_CONFIG[TEXT];
+// const BASE_URL = BASE_URL_CONFIG[OUTER]
+const BASE_URL = BASE_URL_CONFIG[TEXT];
 //图片请求基本url
 const IMAGE_BASE_URL = IMAGE_BASE_URL_CONFIG[OUTER]
 //浏览器下载路径

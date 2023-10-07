@@ -9,7 +9,6 @@ const BASE_URL = serverConfig.url.baseUrl
 
 //登录url
 const LOGIN = BASE_URL + '/api/admin/acl/index/login'
-
 /**
  * 登录
  * @param {String} account 账号

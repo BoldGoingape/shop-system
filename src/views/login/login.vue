@@ -44,8 +44,8 @@ const $router = useRouter()
 const $route = useRoute()
 const UseStore = useUserStore()
 const loginForm = reactive({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: 'atguigu123',
 })
 // 自定义校验
 const validatoruserName = (rule: any, value: any, callback: any) => {
