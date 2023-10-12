@@ -15,11 +15,11 @@ request.interceptors.request.use(
     // 在发送请求之前做些什么
     //设置token
     // if (!config.headers.token) {
-    //   const userStore = useUserStore()
+      const userStore = useUserStore()
 
-    //   if (userStore.token) {
-    //     config.headers.token = userStore.token
-    //   }
+      if (userStore.token) {
+        config.headers.token = userStore.token
+      }
     // }
     return config
   },

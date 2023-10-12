@@ -13,7 +13,6 @@ const BASE_URL_CONFIG: any = {
   // [LOCAL]: PROJECT_URL + "/api/"
   [LOCAL]: 'http://127.0.0.1:18889/',
 }
-
 //图片请求基本url
 const IMAGE_BASE_URL_CONFIG: any = {
   [OUTER]: 'http://139.198.104.58:8212',

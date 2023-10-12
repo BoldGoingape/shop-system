@@ -17,16 +17,12 @@ const LOGIN = BASE_URL + '/api/admin/acl/index/login'
  */ //account: string, password: string
 export const doLogin = async (data: any) => {
   try {
-    console.log(LOGIN)
     const params = new URLSearchParams()
-    // params.append('username', data.username)
-    // params.append('password', data.password)
     const res = await request.post(LOGIN, {
       username: data.username,
       password: data.password,
     })
-    return res.data
-    console.log(data, 123)
+    return res
   } catch (err) {
     handleError(err)
   }

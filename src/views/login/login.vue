@@ -63,18 +63,21 @@ const rules = ref({
   ],
 })
 const login = async () => {
-  // const res =awati doLogin()
-  const result = UseStore.userLogin(loginForm)
   await formRef.value.validate()
+  // const res =awati doLogin()
+  const result =await UseStore.userLogin(loginForm)
   if (result) {
+     // 编程式导航 跳转路由 判断路径中是否有query参数 没有跳转首页
+   
     ElNotification({
       type: 'success',
       message: '登录成功',
       title: `Hi,${getHours()}`,
     })
-    // 编程式导航 跳转路由 判断路径中是否有query参数 没有跳转首页
-    const redirect: any = $route.query.redirect
+ 
+  const redirect: any = $route.query.redirect
     $router.push({ path: redirect || '/' })
+ 
   } else {
     ElNotification({
       type: 'error',

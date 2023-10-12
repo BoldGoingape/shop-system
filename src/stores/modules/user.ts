@@ -4,6 +4,7 @@ import type { loginForm } from '@/api/user/type'
 // 引入路由 常量路由
 import { constantRoute } from '@/router/routes'
 import { doLogin } from '@/api/login'
+import { requserInfo } from '@/api/user'
 // 创建
 const useUserStore = defineStore('User', {
   // 小仓库存数据
@@ -19,16 +20,25 @@ const useUserStore = defineStore('User', {
     //用户登录
     async userLogin(data: loginForm) {
       // 断言写法 （value as string）
-      const val = await doLogin(data)
+      const val :any = await doLogin(data)
       if (val.code == 200) {
-      }
-      if (val.username == 'admin' && val.password == 'admin') {
-        this.token =
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoie1wiYXV0aG9yaXRoeVwiOlwiLTFcIixcImZ1bGxOYW1lXCI6XCJcIixcImlkQ2FyZFwiOlwiSWpaT1lNNi84SThnUHhsOC9GQWJsdz09XCIsXCJtb2RlbFwiOlwiMlwiLFwibmFtZVwiOlwiYWRtaW5cIixcInBhc3N3b3JkXCI6XCJhZG1pblwifSIsImlhdCI6MTY5Mzc0Njk2OH0.W-AWvzrO5CvgoVBG_8cjf4lVVae7EUjywSBoUEku0Kw'
-        localStorage.setItem('TOKEN', this.token)
+        this.token=val.data
+        localStorage.setItem('TOKEN',val.data)
         return true
       } else {
         return false
+      }
+    },
+    // 获取用户信息
+    async userInfo(){
+      let result:any =await requserInfo();
+      console.log(result,1111);
+      if (result.code==200) {
+        this.userName=result.data.checkUser.username;
+        this.avatar=result.data.checkUser.avatar;
+        return 'ok'
+      }else{
+        return Promise.reject("获取用户信息失败");
       }
     },
     // 退出登录
