@@ -6,7 +6,10 @@ import { SUCCESS, TOKEN_EXPIRE } from '@/assets/constant/errors'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import useUserStore from '@/stores/modules/user'
+import serverConfig from '@/assets/config/server.config'
 
+//基本url
+export const BASE_URL = serverConfig.url.baseUrl
 //创建请求实例
 export const request = axios.create()
 //请求拦截器

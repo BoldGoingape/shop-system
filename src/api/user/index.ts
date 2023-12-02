@@ -10,7 +10,8 @@ export const reqLogin=(data:any)=>{
 }
 //获取用户信息接口
 export const requserInfo=()=>{
-    request.get(API.USERINFO_URL)
+    
+    // request.get(API.USERINFO_URL)
 }
 //退出登录
 export const reqLogOut=()=>{

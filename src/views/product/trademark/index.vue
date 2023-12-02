@@ -57,9 +57,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref ,onMounted} from 'vue';
+import {reqHasTrademark} from '@/api/product/trademark'
 const pageNo = ref(1)//当前页码
-const limit = ref(10)//设置没页展示条数
+const limit = ref(3)//设置没页展示条数
 const dialogFormVisible = ref(false)
 const trademarkArr = ref([
     {
@@ -87,7 +88,13 @@ const trademarkArr = ref([
         logoURL: 'https://ts1.cn.mm.bing.net/th/id/R-C.0c8bf36e099654aadaf5f127ef1a3f1b?rik=uHrB%2blGez03%2fAA&riu=http%3a%2f%2fi3.img.969g.com%2fdown%2fimgx2014%2f10%2f24%2f289_102445_a1cff.jpg&ehk=EeF%2fioqRM6NfQqkCgXw%2bwLvO1%2fxZgeZ2pof7ALNLGsg%3d&risl=&pid=ImgRaw&r=0'
     }
 ])
-// 
+// 组件挂载完毕
+onMounted(()=>{
+    getHasTrademark()
+})
+const getHasTrademark=async()=>{
+    const res =await reqHasTrademark(pageNo.value,limit.value)
+}
 const changePageNo = () => {
     console.log(limit.value);
     console.log(pageNo.value);

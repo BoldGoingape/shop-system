@@ -9,6 +9,11 @@ const BASE_URL = serverConfig.url.baseUrl
 
 //登录url
 const LOGIN = BASE_URL + '/api/admin/acl/index/login'
+enum API{
+  LOFIN_URL="/admin/acl/index/login",
+  USERINFO_URL="/api/admin/acl/index/info",
+  LOGOUT_URL="/api/admin/acl/index/logout"
+}
 /**
  * 登录
  * @param {String} account 账号
@@ -25,5 +30,25 @@ export const doLogin = async (data: any) => {
     return res
   } catch (err) {
     handleError(err)
+  }
+}
+//获取用户信息
+export const requserInfo=async()=>{
+  try {
+    const res=await request.get(BASE_URL+API.USERINFO_URL)
+    console.log(res);
+    return res
+    
+  } catch (error) {
+    handleError(error)
+  }
+}
+//退出登录
+export const logout =async()=>{
+  try {
+    const res = await request.post(BASE_URL+API.LOGOUT_URL)
+    return res
+  } catch (error) {
+    handleError(error)
   }
 }

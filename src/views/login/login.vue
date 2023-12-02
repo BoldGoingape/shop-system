@@ -68,7 +68,6 @@ const login = async () => {
   const result =await UseStore.userLogin(loginForm)
   if (result) {
      // 编程式导航 跳转路由 判断路径中是否有query参数 没有跳转首页
-   
     ElNotification({
       type: 'success',
       message: '登录成功',

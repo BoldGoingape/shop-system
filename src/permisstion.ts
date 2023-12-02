@@ -12,7 +12,7 @@ router.beforeEach(async(to: any, from: any, next: any) => {
   document.title=`${setting.title}-${to.meta.title}`
   nprogress.start()
   const token = userStore.token;
-  const username=userStore.userName
+  const username=userStore.name
   if (token) {
     if (to.path=='/login') {
       //登录成功不访问login
@@ -24,10 +24,12 @@ router.beforeEach(async(to: any, from: any, next: any) => {
       }else{
       // 发请求 获取用户信息
       try {
-        await userStore.userInfo();
+     await userStore.userInfo();
         next()
       } catch (error) {
-        new Error('error')
+        //token过期
+        await userStore.userLogout()
+        next({path:'/login',query:{redirect:to.path}})
       }
       }
     }

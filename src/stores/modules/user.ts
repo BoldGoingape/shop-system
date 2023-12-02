@@ -3,8 +3,8 @@ import { defineStore } from 'pinia'
 import type { loginForm } from '@/api/user/type'
 // 引入路由 常量路由
 import { constantRoute } from '@/router/routes'
-import { doLogin } from '@/api/login'
-import { requserInfo } from '@/api/user'
+import { doLogin, logout } from '@/api/login'
+import { requserInfo } from '@/api/login'
 // 创建
 const useUserStore = defineStore('User', {
   // 小仓库存数据
@@ -13,6 +13,7 @@ const useUserStore = defineStore('User', {
       token: localStorage.getItem('TOKEN'),
       userName: '',
       menuRoutes: constantRoute,
+      avatar:''
     }
   },
   //   异步|逻辑地方
@@ -31,11 +32,11 @@ const useUserStore = defineStore('User', {
     },
     // 获取用户信息
     async userInfo(){
+
       let result:any =await requserInfo();
-      console.log(result,1111);
-      if (result.code==200) {
-        this.userName=result.data.checkUser.username;
-        this.avatar=result.data.checkUser.avatar;
+      if (result.code==200) { 
+        this.userName=result.data.name;
+        this.avatar=result.data.avatar;
         return 'ok'
       }else{
         return Promise.reject("获取用户信息失败");
@@ -44,8 +45,10 @@ const useUserStore = defineStore('User', {
     // 退出登录
     userLogout() {
       this.token = ''
-      this.username = ''
-      localStorage.removeItem('TOKEN')
+      this.name = ''
+      this.avatar=''
+      logout()
+      localStorage.removeItem('TOKEN')    
     },
   },
   //

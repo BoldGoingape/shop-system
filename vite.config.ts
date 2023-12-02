@@ -35,6 +35,8 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         '/api': {
           target: 'http://139.198.104.58:8212',
+          // target: 'http://39.98.123.211:8510',
+
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '') // 不可以省略rewrite
         }

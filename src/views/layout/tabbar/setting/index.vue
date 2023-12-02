@@ -53,9 +53,9 @@ const fullScreen = () => {
     document.exitFullscreen()
   }
 }
-const logout = () => {
+const logout = async() => {
   //清空数据
-  userStore.userLogout()
+ await userStore.userLogout()
   // 跳转路由
   $router.push({ path: '/login', query: { redirect: $route.path } })
 }
